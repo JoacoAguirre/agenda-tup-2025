@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { ContactListItem } from '../../components/contact-list-item/contact-list-item';
 import { Contact } from '../../interfaces/contacto';
 import { Auth } from '../../services/auth';
+import { ContactsService } from '../../services/contacts-service';
 
 @Component({
   selector: 'app-contact-list-page',
@@ -12,20 +13,6 @@ import { Auth } from '../../services/auth';
 })
 export class ContactListPage {
 
-  contactos:Contact[] = [{
-    firstName: 'Gonzalo',
-    lastName: 'Bechara',
-    address: 'San Lorenzo',
-    email: 'gbechara@austral.edu.ar',
-    number: '123456',
-    company: 'Austral',
-    id: 0,
-    isFavorite: false,
-    description: 'Hola',
-    image: ''
-  }
-  ]
-
   authService = inject(Auth)
-
+  contactsService = inject(ContactsService)
 }

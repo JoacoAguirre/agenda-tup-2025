@@ -1,7 +1,7 @@
 <p>contact-list-page works!</p>
 <a routerLink="/login">Log in</a>
 
-@for (contacto of contactos; track $index) {
+@for (contacto of contactsService.contactos; track $index) {
     <app-contact-list-item [contacto]="contacto" [index]="$index" />
 } @empty {
     <p>No hay contactos</p>
@@ -14,3 +14,5 @@
         <button (click)="authService.loggear()">Iniciar sesión</button>
     }
 </div>
+
+<button (click)="contactsService.createContact()">+</button>

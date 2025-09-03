@@ -6,6 +6,8 @@ import { Injectable } from '@angular/core';
 export class Auth {
   loggeado: boolean = false;
 
+  aleatorio = Math.random()
+
   loggear(){
     this.loggeado = true;
   }

@@ -1,5 +1,6 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Contact } from '../../interfaces/contacto';
+import { ContactsService } from '../../services/contacts-service';
 
 @Component({
   selector: 'app-contact-list-item',
@@ -8,8 +9,10 @@ import { Contact } from '../../interfaces/contacto';
   styleUrl: './contact-list-item.scss'
 })
 export class ContactListItem {
-  // contacto = input.required<string>();
   index = input.required<number>();
   contacto = input.required<Contact>();
+
+  contactsService = inject(ContactsService)
+
 
 }
