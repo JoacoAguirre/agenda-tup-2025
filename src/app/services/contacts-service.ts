@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Contact } from '../interfaces/contacto';
+import { Contact, NewContact } from '../interfaces/contacto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactsService {
+  
+  /** Lista de contactos en memoria */
   contactos:Contact[] = [
     {
     firstName: 'Gonzalo',
@@ -20,27 +22,25 @@ export class ContactsService {
   }
   ];
 
-  createContact(){
-    this.contactos.push({
-      id: 1,
-      firstName: 'aa',
-      lastName: 'bb',
-      address: '',
-      email: '',
-      number: '',
-      company: '',
-      isFavorite: false,
-      description: '',
-      image: ''
-    })
+  /** Crea un contacto */
+  createContact(nuevoContacto:NewContact){
+    const contacto:Contact = {
+      ...nuevoContacto,
+      id: Math.random(),
+      isFavorite: false
+    }
+
+    this.contactos.push(contacto)
   }
 
+  /** Elimina un contacto segun su ID */
   deleteContact(id:number){
     this.contactos = this.contactos.filter(contacto => contacto.id !== id);
   }
 
   editContact(){}
 
+  /** Obtiene los contactos del backend */
   getContacts(){}
   
 }
