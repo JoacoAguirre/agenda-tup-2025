@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ContactListItem } from '../../components/contact-list-item/contact-list-item';
 import { Contact } from '../../interfaces/contacto';
+import { Auth } from '../../services/auth';
 
 @Component({
   selector: 'app-contact-list-page',
@@ -24,14 +25,7 @@ export class ContactListPage {
     image: ''
   }
   ]
-  logueado = true;
 
-  desloguear(){
-    this.logueado = false;
-  }
-
-  loguear(){
-    this.logueado = true;
-  }
+  authService = inject(Auth)
 
 }

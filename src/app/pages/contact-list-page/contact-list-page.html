@@ -6,11 +6,11 @@
 } @empty {
     <p>No hay contactos</p>
 }
-<div [class.importante]="logueado === true">
+<div [class.importante]="authService.loggeado === true">
     <p>Sesión</p>
-    @if(logueado){
-        <button (click)="desloguear()">Cerrar sesión</button>
+    @if(authService.loggeado){
+        <button (click)="authService.desloggear()">Cerrar sesión</button>
     } @else {
-        <button (click)="loguear()">Iniciar sesión</button>
+        <button (click)="authService.loggear()">Iniciar sesión</button>
     }
 </div>
