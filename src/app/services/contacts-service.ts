@@ -29,7 +29,6 @@ export class ContactsService {
       id: Math.random(),
       isFavorite: false
     }
-
     this.contactos.push(contacto)
   }
 
