@@ -6,9 +6,10 @@
 <p>No hay contactos</p>
 }
 
-<form (ngSubmit)="createContact(newContactForm.value)" #newContactForm="ngForm">
-  <div>
-    <label for="first-name">Nombre*</label>
+<div class="card">
+  <form (ngSubmit)="createContact(newContactForm.value)" #newContactForm="ngForm">
+    <div>
+      <label for="first-name">Nombre*</label>
     <input type="text" name="firstName" id="first-name" ngModel required="true" maxlength="50" #firstName="ngModel">
     @if (firstName.dirty && firstName.invalid) {
       <p class="error">El nombre es obligatorio</p>
@@ -29,7 +30,7 @@
   <div>
     <label for="number">Telefono*</label>
     <input type="text" name="number" id="number" ngModel maxlength="50" required="true" minlength="4" #phone="ngModel">
-      @if (phone.dirty && phone.invalid) {
+    @if (phone.dirty && phone.invalid) {
       <p class="error">El telefono es obligatorio y tiene que tener al menos 4 caracteres y no mas de 50</p>
     }
   </div>
@@ -49,3 +50,4 @@
 </form>
 
 <button (click)="crearContactoEjemplo()">Crear contacto ejemplo</button>
+</div>
