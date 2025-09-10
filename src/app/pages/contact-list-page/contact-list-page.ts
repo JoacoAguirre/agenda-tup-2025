@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ContactListItem } from '../../components/contact-list-item/contact-list-item';
 import { Contact, NewContact } from '../../interfaces/contacto';
@@ -12,7 +12,10 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './contact-list-page.html',
   styleUrl: './contact-list-page.scss'
 })
-export class ContactListPage {
+export class ContactListPage implements OnInit {
+  ngOnInit(): void {
+    this.contactsService.getContacts();
+  }
 
   authService = inject(Auth)
   contactsService = inject(ContactsService)

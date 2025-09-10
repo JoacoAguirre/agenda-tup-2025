@@ -1,6 +1,7 @@
 <nav>
     <a routerLink="/">Usuarios</a>
     <a routerLink="/groups">Grupo</a>
+    <button (click)="authService.logout()">Logout</button>
 </nav>
 <!-- EL RESULTADO DEL ROUTER -->
  <router-outlet/>
