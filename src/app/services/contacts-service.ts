@@ -7,23 +7,31 @@ import { Auth } from './auth';
 })
 export class ContactsService {
   authService = inject(Auth);
-  
+  readonly URL_BASE = "https://agenda-api.somee.com/api/contacts";
+
   /** Lista de contactos en memoria */
-  contactos:Contact[] = [];
+  contacts:Contact[] = [];
 
   /** Crea un contacto */
-  createContact(nuevoContacto:NewContact){
-    const contacto:Contact = {
-      ...nuevoContacto,
-      id: Math.random(),
-      isFavorite: false
-    }
-    this.contactos.push(contacto)
+  async createContact(nuevoContacto:NewContact) {
+    const res = await fetch(this.URL_BASE, 
+      {
+        method:"POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer "+this.authService.token,
+        },
+        body: JSON.stringify(nuevoContacto)
+      });
+    if(!res.ok) return;
+    const resContact:Contact = await res.json();
+    this.contacts.push(resContact);
+    return resContact;
   }
 
   /** Elimina un contacto segun su ID */
   deleteContact(id:number){
-    this.contactos = this.contactos.filter(contacto => contacto.id !== id);
+    this.contacts = this.contacts.filter(contacto => contacto.id !== id);
   }
 
   editContact(){}
@@ -39,7 +47,7 @@ export class ContactsService {
       })
       if(res.ok){
         const resJson:Contact[] = await res.json()
-        this.contactos = resJson;
+        this.contacts = resJson;
       }
   }
   

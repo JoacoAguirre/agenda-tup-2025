@@ -6,31 +6,40 @@ import { LoggedLayout } from './layouts/logged-layout/logged-layout';
 import { RegisterPage } from './pages/register/register';
 import { onlyPublicGuard } from './guards/only-public-guard-guard';
 import { onlyUserGuard } from './guards/only-user-guard-guard';
+import { NewEditContact } from './pages/new-edit-contact/new-edit-contact';
+import { GroupsListPage } from './pages/groups-list-page/groups-list-page';
 
 export const routes: Routes = [
     {
-        path:"login",
+        path: "login",
         component: LoginPage,
         canActivate: [onlyPublicGuard]
     },
     {
-        path:"register",
+        path: "register",
         component: RegisterPage,
         canActivate: [onlyPublicGuard]
 
     },
     {
         // Path vacío se abre cuando la página no tiene url más que localhost
-        path:"",
+        path: "",
         component: LoggedLayout,
         canActivateChild: [onlyUserGuard],
         children: [
             {
-                path:"",
+                path: "",
                 component: ContactListPage
+            }, {
+                path: "contacts/new",
+                component: NewEditContact
             },
             {
-                path:"contacts/:id",
+                path: "groups",
+                component: GroupsListPage
+            },
+            {
+                path: "contacts/:id",
                 component: ContactDetailsPage
             },
         ]
