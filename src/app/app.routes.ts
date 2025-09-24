@@ -33,6 +33,9 @@ export const routes: Routes = [
             }, {
                 path: "contacts/new",
                 component: NewEditContact
+            }, {
+                path: "contacts/:idContacto/edit",
+                component: NewEditContact
             },
             {
                 path: "groups",
