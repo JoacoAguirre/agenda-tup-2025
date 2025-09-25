@@ -30,8 +30,17 @@ export class ContactsService {
   }
 
   /** Elimina un contacto segun su ID */
-  deleteContact(id:number){
-    this.contacts = this.contacts.filter(contacto => contacto.id !== id);
+  async deleteContact(id:number){
+    const res = await fetch(this.URL_BASE+"/"+id, 
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: "Bearer "+this.authService.token,
+        },
+      });
+    if(!res.ok) return;
+    this.contacts = this.contacts.filter(contact => contact.id !== id);
+    return true;
   }
 
   async editContact(contact:Contact){
@@ -82,6 +91,26 @@ export class ContactsService {
         return resJson;
       }
       return null;
+  }
+
+  /** Marca/desmarca un contacto como favorito */
+  async setFavourite(id:string | number ) {
+    const res = await fetch(this.URL_BASE+"/"+id+"/favorite", 
+      {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer "+this.authService.token,
+        },
+      });
+    if(!res.ok) return;
+    /** Edita la lista actual de contactos reemplazando sólamente el favorito del que editamos */
+    this.contacts = this.contacts.map(contact => {
+      if(contact.id === id) {
+        return {...contact, isFavorite: !contact.isFavorite};
+      };
+      return contact;
+    });
+    return true;
   }
   
 }
