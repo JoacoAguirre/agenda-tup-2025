@@ -42,7 +42,7 @@ export const routes: Routes = [
                 component: GroupsListPage
             },
             {
-                path: "contacts/:id",
+                path: "contacts/:idContacto",
                 component: ContactDetailsPage
             },
         ]

@@ -40,24 +40,6 @@ ng build
 
 Esto compilará tu proyecto y almacenará los artefactos de compilación en el directorio `dist/`. De forma predeterminada, la compilación de producción optimiza tu aplicación para rendimiento y velocidad.
 
-## Ejecución de pruebas unitarias
 
-Para ejecutar pruebas unitarias con el ejecutor de pruebas [Karma](https://karma-runner.github.io), utiliza el siguiente comando:
-
-```bash
-ng test
-```
-
-## Ejecución de pruebas end-to-end
-
-Para pruebas end-to-end (e2e), ejecuta:
-
-```bash
-ng e2e
-```
-
-Angular CLI no incluye por defecto un framework de pruebas end-to-end. Puedes elegir el que mejor se adapte a tus necesidades.
-
-## Recursos adicionales
-
-Para obtener más información sobre el uso de Angular CLI, incluyendo referencias detalladas de comandos, visita la página [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli)
+# Backend
+Si queremos saber que capacidades tiene el backend de este proyecto, podemos dirigirnos a su [swagger](https://agenda-api.somee.com/swagger/index.html)
