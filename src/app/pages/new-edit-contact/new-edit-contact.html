@@ -1,5 +1,6 @@
 <!-- Toda la parte de nuevo contacto luego irá en una nueva pestaña o en una ventana emergente. A elección. -->
 <div id="container" class="card">
+
  @if(idContacto()){
    <h2>Editar contacto</h2>
 } @else { 
@@ -48,6 +49,9 @@
     <button [disabled]="newContactForm.invalid || solicitudABackEnCurso">Editar</button>
   } @else { 
     <button [disabled]="newContactForm.invalid || solicitudABackEnCurso">Agregar</button>
+  }
+  @if (solicitudABackEnCurso) {
+    <app-spinner/>
   }
 
  </form>

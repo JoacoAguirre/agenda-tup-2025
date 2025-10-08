@@ -15,10 +15,13 @@
       <p class="error">Debe colocar una contraseña de al menos 4 caracteres.</p>
     } 
   </div>
-  <button [disabled]="loginForm.invalid">Iniciar sesión</button>
+  <button [disabled]="loginForm.invalid || solicitudABackEnCurso">Iniciar sesión</button>
   @if (errorLogin) {
     <p class="error">Datos de sesión incorrectos, intente nuevamente.</p>
   } 
+  @if (solicitudABackEnCurso) {
+    <app-spinner/>
+  }
   <p>No tenés cuenta? <a routerLink="/register">Registrate</a></p>
 </form>
 
