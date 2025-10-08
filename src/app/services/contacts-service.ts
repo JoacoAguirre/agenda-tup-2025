@@ -30,8 +30,17 @@ export class ContactsService {
   }
 
   /** Elimina un contacto segun su ID */
-  deleteContact(id:number){
-    this.contacts = this.contacts.filter(contacto => contacto.id !== id);
+  async deleteContact(id:number){
+    const res = await fetch(this.URL_BASE+"/"+id, 
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: "Bearer "+this.authService.token,
+        },
+      });
+    if(!res.ok) return;
+    this.contacts = this.contacts.filter(contact => contact.id !== id);
+    return true;
   }
 
   async editContact(contact:Contact){

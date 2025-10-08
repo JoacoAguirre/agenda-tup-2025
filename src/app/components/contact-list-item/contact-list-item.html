@@ -3,5 +3,5 @@
         ⭐
     }
     <a [routerLink]="['/contacts',contacto().id,'edit']">Editar</a>
-    <button (click)="contactsService.deleteContact(contacto().id)">Borrar</button>
+    <button (click)="showDeleteModal()">Borrar</button>
 </p>
