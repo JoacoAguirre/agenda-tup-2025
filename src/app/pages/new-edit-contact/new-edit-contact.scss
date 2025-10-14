@@ -1,0 +1,89 @@
+html {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  min-height: 50vh;
+  width: 40vh;
+  padding: 2rem;
+  border-radius: 15px;
+  background: #ffffffcc;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3), 0 10px 20px rgba(0, 0, 0, 0.2); 
+  backdrop-filter: blur(8px);
+  height: 50vh;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  margin: 0;
+  top: 50%;
+}
+
+.InputEdit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4px;
+}
+.Iniciar {
+  display: flex;
+  justify-content: center;
+  font-size: 1.8rem; 
+  margin-bottom: 1.5rem; 
+  color: #1a1a1a; 
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 10px; 
+}
+
+.Iniciar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px; 
+  height: 4px; 
+  background: #2575fc; 
+  border-radius: 2px;
+}
+button {
+  background: #2575fc;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:disabled {
+    background: #2575fc;
+    cursor: not-allowed;
+  }
+}
+
+.divButtons{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    padding-top: 10px;
+}
+
+#Fav{
+    padding: 3px;
+    padding-top: 10px;
+}
