@@ -1,3 +1,74 @@
-p{
-    color: red;
+.contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 93%;
+  padding: 1rem 1.5rem;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.25s ease;
+}
+
+.contact-item:hover {
+  transform: translateY(-3px);
+  border-color: #2575fc;
+  box-shadow: 0 8px 18px rgba(37, 117, 252, 0.15);
+}
+
+
+.info {
+  flex: 1;
+}
+
+.name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #222;
+}
+
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; 
+}
+
+
+.actions a,
+.actions button {
+  border: none;
+  cursor: pointer;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: 0.25s ease;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* Botón Editar */
+.actions .edit {
+  background: #2575fc;
+  color: white;
+  box-shadow: 0 2px 6px rgba(37, 117, 252, 0.3);
+}
+
+.actions .edit:hover {
+  background: #1b5ed7;
+}
+
+/* Botón Borrar */
+.actions .delete {
+  background: #e53935;
+  color: white;
+  box-shadow: 0 2px 6px rgba(229, 57, 53, 0.3);
+}
+
+.actions .delete:hover {
+  background: #c62828;
 }

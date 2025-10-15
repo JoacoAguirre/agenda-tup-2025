@@ -1,9 +1,22 @@
-<h1>Contactos</h1>
-@for (contacto of contactsService.contacts; track $index) {
-  <a [routerLink]="['/contacts', contacto.id]">
-    <app-contact-list-item [contacto]="contacto" [index]="$index" />
-  </a>
-} @empty {
-<p>No hay contactos, <a routerLink="/contacts/new">agregá uno</a>.</p>
-}
-<a routerLink="/contacts/new">Nuevo contacto +</a>
+<html>
+  <div id="contacts-container">
+  <h1>Contactos</h1>
+
+  <div class="contact-list">
+    @for (contacto of contactsService.contacts; track $index) {
+      <a [routerLink]="['/contacts', contacto.id]" >
+        <app-contact-list-item [contacto]="contacto" [index]="$index" />
+      </a>
+    } @empty {
+      <p class="empty-state">
+        No hay contactos, <a routerLink="/contacts/new">agregá uno</a>.
+      </p>
+    }
+  </div>
+  <div class="new-contact-container">
+      <a routerLink="/contacts/new" class="new-contact">Nuevo contacto +</a>
+  </div>
+
+  <a routerLink="/" id="home">Home</a>
+</div>
+</html> 
