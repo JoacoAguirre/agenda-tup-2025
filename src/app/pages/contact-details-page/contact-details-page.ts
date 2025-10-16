@@ -2,10 +2,11 @@ import { Component, inject, input, OnInit } from '@angular/core';
 import { ContactsService } from '../../services/contacts-service';
 import { Router, RouterModule } from '@angular/router';
 import { Contact } from '../../interfaces/contacto';
+import { ContactListItem } from "../../components/contact-list-item/contact-list-item";
 
 @Component({
   selector: 'app-contact-details-page',
-  imports: [RouterModule],
+  imports: [RouterModule, ],
   templateUrl: './contact-details-page.html',
   styleUrl: './contact-details-page.scss'
 })
@@ -27,10 +28,10 @@ idContacto = input.required<string>();
     }
   }
 
-  async toggleFavorite(){
+  async toggleFavourite(){
     if(this.contacto){
       const res = await this.contactService.setFavourite(this.contacto.id);
-      if(res) this.contacto.isFavorite = !this.contacto.isFavorite;
+  if(res) this.contacto.isFavorite = !this.contacto.isFavorite;
     }
   }
 

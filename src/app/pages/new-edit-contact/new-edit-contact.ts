@@ -6,9 +6,10 @@ import { Contact, NewContact } from '../../interfaces/contacto';
 import { Spinner } from '../../components/spinner/spinner';
 import { Checkbox } from '../../components/checkbox/checkbox';
 
+
 @Component({
   selector: 'app-new-edit-contact',
-  imports: [FormsModule,Spinner, Checkbox],
+  imports: [FormsModule, Spinner,],
   templateUrl: './new-edit-contact.html',
   styleUrl: './new-edit-contact.scss'
 })
@@ -32,7 +33,7 @@ export class NewEditContact implements OnInit {
           email: contacto.email,
           firstName:contacto.firstName,
           image:contacto.image,
-          isFavourite:contacto.isFavorite,
+          isFavorite:contacto.isFavorite,
           lastName: contacto.lastName,
           number: contacto.number
         })
@@ -50,22 +51,32 @@ export class NewEditContact implements OnInit {
       image: form.value.image,
       number: form.value.number,
       company: form.value.company,
-      isFavorite: form.value.isFavorite
+  isFavorite: form.value.isFavorite
     }
 
     this.solicitudABackEnCurso = true;
     let res;
     if(this.idContacto()){
       res = await this.contactsService.editContact({...nuevoContacto,id:this.contactoBack!.id});
+      this.solicitudABackEnCurso = false;
+      if(!res) {
+        this.errorEnBack = true;
+        return;
+      }
+      this.router.navigate(['']);
+      return;
     } else {
       res = await this.contactsService.createContact(nuevoContacto);
+      this.solicitudABackEnCurso = false;
+      if(!res) {
+        this.errorEnBack = true;
+        return;
+      }
+      this.router.navigate(["/contacts",res.id]);
     }
-    this.solicitudABackEnCurso = false;
+  }
 
-    if(!res) {
-      this.errorEnBack = true;
-      return
-    };
-    this.router.navigate(["/contacts",res.id]);
+  volver() {
+  this.router.navigate(['']); 
   }
 }

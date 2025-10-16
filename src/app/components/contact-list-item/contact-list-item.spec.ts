@@ -21,3 +21,4 @@ describe('ContactListItem', () => {
     expect(component).toBeTruthy();
   });
 });
+

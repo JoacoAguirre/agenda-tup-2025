@@ -1,11 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-checkbox',
-  imports: [],
   templateUrl: './checkbox.html',
-  styleUrl: './checkbox.scss'
+  styleUrls: ['./checkbox.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => Checkbox),
+      multi: true
+    }
+  ]
 })
-export class Checkbox {
+export class Checkbox implements ControlValueAccessor {
+  value = false;
 
+  onChange = (value: boolean) => {};
+  onTouched = () => {};
+
+  writeValue(value: boolean): void {
+    this.value = value;
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState?(isDisabled: boolean): void {}
+
+  toggleCheckbox(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.value = input.checked;
+    this.onChange(this.value);
+    this.onTouched();
+  }
 }
