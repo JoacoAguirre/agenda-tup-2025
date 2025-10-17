@@ -1,9 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { RedirectCommand, RouterLink } from '@angular/router';
 import { FormUser } from '../../interfaces/user';
 import { UsersService } from '../../services/users-service';
 import { Spinner } from '../../components/spinner/spinner';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,7 @@ import { Spinner } from '../../components/spinner/spinner';
 export class RegisterPage {
   isLoading = false;
   errorRegister = false;
-
+  router = inject(Router);
   userService = inject(UsersService);
 
   async register(form: FormUser) {
@@ -42,6 +43,9 @@ export class RegisterPage {
 
     if (!ok) {
       this.errorRegister = true;
+    }
+    else {
+      this.router.navigate(['/login']);
     }
   }
 }
